@@ -15,7 +15,7 @@ function getSeason(date) {
   if(!date){
     return 'Unable to determine the time of year!';
   }
-  if(typeof (date.getMonth()+1) === 'number'){
+  if (!(date instanceof Date)||Object.getOwnPropertyNames(date).length > 0){
     throw new Error('Invalid date!')
   }
   const month = date.getMonth()
@@ -29,7 +29,7 @@ function getSeason(date) {
     return 'winter'
   }
 }
-getSeason(new Date(1900, 0, 22, 23, 45, 11, 500))
+
 module.exports = {
   getSeason
 };
